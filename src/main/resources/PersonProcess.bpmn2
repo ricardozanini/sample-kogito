@@ -1,4 +1,4 @@
-<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_zFrRkGLqEDiMEdphqjbtXg" exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" id="_huxIwGLtEDiCO-z2OXHCJg" exporter="jBPM Process Modeler" exporterVersion="2.0" targetNamespace="http://www.omg.org/bpmn20">
   <bpmn2:itemDefinition id="_personItem" structureRef="org.acme.Person"/>
   <bpmn2:itemDefinition id="_isAdultItem" structureRef="Boolean"/>
   <bpmn2:itemDefinition id="__8481D49C-FB1A-4A17-85BE-0CEE134C1E28_namespaceInputXItem" structureRef="java.lang.String"/>
@@ -32,6 +32,9 @@
         </drools:metaData>
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
+    <bpmn2:sequenceFlow id="_C9158827-FF77-4686-92E1-F762324E961C" sourceRef="_504CE149-36C5-4FBD-AA60-7F91E2ACCE8E" targetRef="_921552EA-0502-47CE-B282-85A4A22A90DC">
+      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return isAdult == false;]]></bpmn2:conditionExpression>
+    </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_93789417-23FA-496C-9CD7-C6C1FFFEA8AE" sourceRef="_504CE149-36C5-4FBD-AA60-7F91E2ACCE8E" targetRef="_CBC1D7E6-0520-4283-9804-3E31CA4A869A">
       <bpmn2:extensionElements>
         <drools:metaData name="isAutoConnection.target">
@@ -39,9 +42,6 @@
         </drools:metaData>
       </bpmn2:extensionElements>
       <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return isAdult == true;]]></bpmn2:conditionExpression>
-    </bpmn2:sequenceFlow>
-    <bpmn2:sequenceFlow id="_C9158827-FF77-4686-92E1-F762324E961C" sourceRef="_504CE149-36C5-4FBD-AA60-7F91E2ACCE8E" targetRef="_921552EA-0502-47CE-B282-85A4A22A90DC">
-      <bpmn2:conditionExpression xsi:type="bpmn2:tFormalExpression" language="http://www.java.com/java"><![CDATA[return isAdult == false; ]]></bpmn2:conditionExpression>
     </bpmn2:sequenceFlow>
     <bpmn2:sequenceFlow id="_FA8D0FF5-EDC6-4C89-B61D-0E7022AADAAF" sourceRef="_8481D49C-FB1A-4A17-85BE-0CEE134C1E28" targetRef="_504CE149-36C5-4FBD-AA60-7F91E2ACCE8E"/>
     <bpmn2:sequenceFlow id="_5082605A-A5B2-4621-A200-6EB58BF59013" sourceRef="_75AC8C0C-CFBD-4ADF-A3B4-83AB90581A73" targetRef="_8481D49C-FB1A-4A17-85BE-0CEE134C1E28">
@@ -99,8 +99,8 @@
     </bpmn2:userTask>
     <bpmn2:exclusiveGateway id="_504CE149-36C5-4FBD-AA60-7F91E2ACCE8E" gatewayDirection="Diverging">
       <bpmn2:incoming>_FA8D0FF5-EDC6-4C89-B61D-0E7022AADAAF</bpmn2:incoming>
-      <bpmn2:outgoing>_C9158827-FF77-4686-92E1-F762324E961C</bpmn2:outgoing>
       <bpmn2:outgoing>_93789417-23FA-496C-9CD7-C6C1FFFEA8AE</bpmn2:outgoing>
+      <bpmn2:outgoing>_C9158827-FF77-4686-92E1-F762324E961C</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
     <bpmn2:businessRuleTask id="_8481D49C-FB1A-4A17-85BE-0CEE134C1E28" name="Evaluate Person" implementation="http://www.jboss.org/drools/dmn">
       <bpmn2:extensionElements>
@@ -186,14 +186,14 @@
         <di:waypoint x="466" y="226"/>
         <di:waypoint x="546" y="226"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__504CE149-36C5-4FBD-AA60-7F91E2ACCE8E_to_shape__921552EA-0502-47CE-B282-85A4A22A90DC" bpmnElement="_C9158827-FF77-4686-92E1-F762324E961C">
-        <di:waypoint x="602" y="226"/>
-        <di:waypoint x="682" y="226"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__504CE149-36C5-4FBD-AA60-7F91E2ACCE8E_to_shape__CBC1D7E6-0520-4283-9804-3E31CA4A869A" bpmnElement="_93789417-23FA-496C-9CD7-C6C1FFFEA8AE">
         <di:waypoint x="574" y="254"/>
         <di:waypoint x="574" y="361"/>
         <di:waypoint x="916" y="361"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_shape__504CE149-36C5-4FBD-AA60-7F91E2ACCE8E_to_shape__921552EA-0502-47CE-B282-85A4A22A90DC" bpmnElement="_C9158827-FF77-4686-92E1-F762324E961C">
+        <di:waypoint x="602" y="226"/>
+        <di:waypoint x="682" y="226"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_shape__921552EA-0502-47CE-B282-85A4A22A90DC_to_shape__425D2318-A9BF-4F9C-9B53-A987BB8AC006" bpmnElement="_2483E673-3172-471A-8CF5-6104782F16CA">
         <di:waypoint x="836" y="226"/>
@@ -256,7 +256,7 @@
         </bpsim:Scenario>
       </bpsim:BPSimData>
     </bpmn2:extensionElements>
-    <bpmn2:source>_zFrRkGLqEDiMEdphqjbtXg</bpmn2:source>
-    <bpmn2:target>_zFrRkGLqEDiMEdphqjbtXg</bpmn2:target>
+    <bpmn2:source>_huxIwGLtEDiCO-z2OXHCJg</bpmn2:source>
+    <bpmn2:target>_huxIwGLtEDiCO-z2OXHCJg</bpmn2:target>
   </bpmn2:relationship>
 </bpmn2:definitions>
