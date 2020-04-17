@@ -3,10 +3,10 @@ package org.acme;
 import java.io.Serializable;
 
 public class Person {
-    private String name;
+	private String name;
 	private int age;
 	private boolean adult;
-	
+
 	public String getName() {
 		return name;
 	}
